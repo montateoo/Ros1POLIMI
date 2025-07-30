@@ -1,0 +1,37 @@
+<launch>
+  <param name="/use_sim_time" value="true" />
+  <param name="min_valid_range" value="0.4" />
+  <param name="wheel_ignore_range" value="0.0" /> #non sapendo i reali parametri ho lasciato solo l'impostazione
+
+
+
+  <!-- odom-to-TF broadcaster -->
+  <node pkg="second_project" type="odom_to_tf" name="odom_to_tf" output="screen" />
+  <node pkg="second_project" type="laser_scan_merger" name="laser_scan_merger" output="screen" />
+
+  <!-- Gmapping node -->
+  <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
+    <param name="base_frame" value="base_link" />        <!-- from TF: child_frame -->
+    <param name="odom_frame" value="odom" />             <!-- from TF: parent_frame -->
+    <param name="map_update_interval" value="2.0" />
+    <param name="maxUrange" value="18.0" />               <!-- max laser range -->
+    <param name="maxRange" value="20.0" />
+    <param name="delta" value="0.05" />
+    <param name="particles" value="50" />
+    <param name="linearUpdate" value="0.3" />
+    <param name="angularUpdate" value="0.3" />
+    <param name="resampleThreshold" value="0.5" />
+    <param name="minimumScore" value="60" />
+    <remap from="scan" to="/scan_360" />
+  </node>
+
+  <!-- RViz  -->
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find second_project)/rviz/first_node_rviz.rviz" />
+
+  <!-- Path to the bag file  -->
+  <arg name="bag_file" default="../data/robotics2.bag" />
+
+  <!-- Play rosbag file with simulated time -->
+  <node pkg="rosbag" type="play" name="bag_play" args="--clock $(arg bag_file)" output="screen" />
+
+</launch>

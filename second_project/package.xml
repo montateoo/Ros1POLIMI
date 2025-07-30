@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>second_project</name>
+  <version>0.0.1</version>
+  <description>second_project package</description>
+
+  <maintainer email="matteo.montanelli@mail.polimi.it">MontanelliMatteo</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <!-- Dipendenze runtime -->
+  <exec_depend>roscpp</exec_depend>
+  <exec_depend>rosbag</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>message_runtime</exec_depend>
+
+  <!-- Dipendenze build -->
+  <build_depend>roscpp</build_depend>
+  <build_depend>rosbag</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>message_generation</build_depend>
+
+
+  <!-- Dipendenze per l'export -->
+  <build_export_depend>roscpp</build_export_depend>
+  <build_export_depend>rosbag</build_export_depend>
+  <build_export_depend>sensor_msgs</build_export_depend>
+  <build_export_depend>std_msgs</build_export_depend>
+
+  <export>
+    <!-- Niente di particolare da esportare -->
+  </export>
+</package>

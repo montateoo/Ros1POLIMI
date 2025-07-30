@@ -1,0 +1,44 @@
+include "robot.inc"
+
+define floorplan model
+(
+  color "gray30"
+  boundary 1
+  gui_nose 0
+  gui_grid 0
+  gui_outline 0
+  gripper_return 0
+  fiducial_return 0
+  ranger_return 1
+)
+
+# Set simulation resolution (m/pixel) and timestep
+resolution 0.05
+interval_sim 100
+
+# Window configuration
+window
+(
+  size [ 600.0 700.0 ]
+  center [ 0.0 0.0 ]
+  rotate [ 0.0 0.0 ]
+  scale 60
+)
+
+# Environment map
+floorplan
+(
+  name "map"
+  bitmap "mapCrop.png"               # Make sure to convert uploaded image to this filename and binarize
+  size [38.5 20.3 2.0]         # Adjust if actual image scale differs
+  pose [0 0 0.0 0.0 0.0]  # mappa centrata in (100, 100)       # Centers map in world coordinates
+)
+
+# One robot placed in the bottom-left corner of the map
+omniBot
+(
+  pose [0.0 0.0 0.0 0.0 0.0]   # posizione centrale nella mappa
+  name "robot"
+  color "red"
+)
+

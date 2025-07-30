@@ -1,0 +1,1 @@
+Il nodo odometer prende anch'esso i dati in uscita dal nodo gps_odometer per migliorare la precisione. Ho creato un filtro dove confronta la posizione stimata dall'odometria e quella reale del gps, in base all'offset e ad una percentuale di fusione coi dati reali viene corretta la traiettoria. Vengono usati dati direttamente dal nodo gps perchè servono in formato ENU
